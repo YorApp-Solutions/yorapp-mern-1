@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./backend/server.js",
-    "start": "node ./backend/server.js"
+    "start": "node ./backend/server.js",
+    "lint:js:fix": "eslint ./frontend/**/*.js,.jsx --fix"
   },
   "repository": {
     "type": "git",
@@ -33,20 +34,9 @@
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.4.0",
     "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "frontend/**/*.{js,jsx}": [
-      "eslint",
-      "pretty-quick-staged",
-      "git add"
-    ]
   }
 }
