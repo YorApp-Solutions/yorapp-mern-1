@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const dbConfig = require('./dbConfig');
 const mongoose = require('mongoose');
 const userRouter = require('./routes/userRoutes');
+const path = require('path');
 
 const mongoURL = dbConfig.url;
 
-mongoose.connect(mongoURL, {useUnifiedTopology: true, useNewUrlParser: true});
+mongoose.connect(mongoURL, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.log.bind(console, 'connection error'));
 
@@ -15,14 +16,11 @@ const app = express();
 const port = 8000;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/api/user', userRouter);
 
-
-app.get('/', function(req, res){
-    res.send('hello');
-})
+app.use(express.static(path.resolve(__dirname, '../dist')));
 
 // app.get('/number', function(req, res){
 //     //create a schema
@@ -40,9 +38,8 @@ app.get('/', function(req, res){
 
 // })
 
-
-db.once('open', function(){
-    app.listen(port, ()=>{
-        console.log(`listening at ${port}`)
-    })
-})
+db.once('open', function() {
+    app.listen(port, () => {
+        console.log(`listening at ${port}`);
+    });
+});
