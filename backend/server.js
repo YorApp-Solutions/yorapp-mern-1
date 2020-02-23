@@ -4,7 +4,9 @@ const app = express();
 
 const port = 8000;
 
-app.get('/', (req, res)=>{
+app.use(express.static('public'));
+
+app.get('/', function(req, res){
     res.send('hello');
 })
 
