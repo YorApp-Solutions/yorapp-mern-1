@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const dbConfig = require('./dbConfig');
 const mongoose = require('mongoose');
 const userRouter = require('./routes/userRoutes');
+const storeRouter = require('./routes/storeRoutes');
 const path = require('path');
 
 const mongoURL = dbConfig.url;
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/api/user', userRouter);
+app.use('/api/store', storeRouter);
 
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
