@@ -1,4 +1,4 @@
-const Store = require('../models/YorstoreOfTheDay.js');
+const Store = require('../models/YorStoreOfTheDayModel');
 
 const StoreController = {
     getStores: (req, res) => {
