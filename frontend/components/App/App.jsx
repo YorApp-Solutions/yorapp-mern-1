@@ -1,28 +1,13 @@
 import React, { Fragment } from 'react';
 import { isEmpty } from 'lodash';
+import Banner from '../Banner/Banner.jsx';
 
 const App = (props) => {
-    console.log(props.stores);
+    const banner = props.banner[0];
     return (
         <Fragment>
-            <ul>
-                {!isEmpty(props.stores) &&
-                    props.stores.map((elem) => (
-                        <li key={elem.assign_id}>
-                            {elem.name}
-                            <ul>
-                                <li>{elem.category}</li>
-                                <li>
-                                    <img
-                                        src={elem.logo}
-                                        height="30"
-                                        width="30"
-                                    />
-                                </li>
-                            </ul>
-                        </li>
-                    ))}
-            </ul>
+            <Banner stores={banner} />
+            abcd
         </Fragment>
     );
 };

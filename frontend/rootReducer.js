@@ -1,9 +1,18 @@
 import { combineReducers } from 'redux';
 
-import { storeReducer } from './containers/reducer';
+import { storesReducer } from './containers/App/reducer';
+import { offersReducer } from './containers/Offers/reducer';
+import { bannerReducer } from './containers/Banner/reducer';
+import { yorStoreOfTheDayReducer } from './containers/YorStoreOfTheDay/reducer';
 
 const rootReducer = combineReducers({
-    stores: storeReducer,
+    current: combineReducers({
+        city: 'Jamshedpur',
+        yorStores: yorStoreOfTheDayReducer,
+        banner: bannerReducer,
+        offers: offersReducer,
+        stores: storesReducer,
+    }),
 });
 
 export default rootReducer;

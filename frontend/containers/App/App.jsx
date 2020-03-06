@@ -1,37 +1,26 @@
-import React from 'react';
-import { connect } from 'react-redux';
-
-import axios from 'axios';
-
-import AppComponent from '../../components/App/App.jsx';
-import { store } from '../reducer';
+import React, { Fragment } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Header from '../Header/Header.jsx';
+import LandingPage from '../LandingPage/LandingPage.jsx';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.res;
-        this.state = {};
-    }
-
-    componentDidMount() {
-        (async () => {
-            this.res = await axios.get('/api/store/get');
-            this.props.dispatchInput(this.res.data.result);
-        })();
+    constructor() {
+        super();
     }
     render() {
-        return <AppComponent {...this.props} />;
+        return (
+            <Fragment>
+                <Header />
+                <main>
+                    <Switch>
+                        <Route exact path="/">
+                            <LandingPage />
+                        </Route>
+                    </Switch>
+                </main>
+            </Fragment>
+        );
     }
 }
 
-export const mapStateToProps = (state) => {
-    return { stores: state.stores };
-};
-
-export const mapDispatchToProps = (dispatch) => {
-    return {
-        dispatchInput: (res) => dispatch(store(res)),
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
