@@ -2,10 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dbConfig = require('./dbConfig');
 const mongoose = require('mongoose');
-//const landingPageRouter = require('./routes/landingPageRoutes');
+const landingPageRouter = require('./routes/landingPageRoutes');
 const bannerRouter = require('./routes/bannerRoutes');
 const yorStoreRouter = require('./routes/yorStoreRoutes');
 const offersRouter = require('./routes/offerRoutes');
+const storeDetailsRouter = require('./routes/storeDetailsRoutes');
 const path = require('path');
 
 const mongoURL = dbConfig.url;
@@ -21,10 +22,11 @@ const port = 8000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
-//app.use('/api/landingPage', landingPageRouter);
+app.use('/api/landingPage', landingPageRouter);
 app.use('/api/banner', bannerRouter);
 app.use('/api/yorStores', yorStoreRouter);
 app.use('/api/offers', offersRouter);
+app.use('/api/stores', storeDetailsRouter);
 
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
