@@ -1,12 +1,10 @@
 import React, { Fragment } from 'react';
-import Axios from 'axios';
 import { connect } from 'react-redux';
 import Banner from '../Banner/Banner.jsx';
 import YorStoreOfTheDay from '../YorStoreOfTheDay/YorStoreOfTheDay.jsx';
 import Offers from '../Offers/Offers.jsx';
 import FooterFilter from '../../components/FooterFilter/FooterFilter.jsx';
 import PropTypes from 'prop-types';
-import { storeData } from './reducer';
 
 class LandingPage extends React.Component {
     constructor(props) {
@@ -14,14 +12,6 @@ class LandingPage extends React.Component {
         this.state = { category: 'all' };
         this.filterPage = this.filterPage.bind(this);
         this.createObj = this.createObj.bind(this);
-    }
-
-    componentDidMount() {
-        (async () => {
-            this.res = await Axios.get('/api/landingPage/get');
-
-            this.props.getStoreInitialData(this.createObj(this.res.data));
-        })();
     }
 
     createObj(resData) {
@@ -65,16 +55,15 @@ LandingPage.defaultProps = {
     category: 'all',
 };
 
-export const mapStateToProps = (state) => {
-    return {};
-};
+// export const mapStateToProps = (state) => {
+//     return {};
+// };
 
-export const mapDispatchToProps = (dispatch) => {
-    return {
-        getStoreInitialData: (res) => {
-            dispatch(storeData(res));
-        },
-    };
-};
+// export const mapDispatchToProps = (dispatch) => {
+//     return {
+//     };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
+// export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
+
+export default LandingPage;

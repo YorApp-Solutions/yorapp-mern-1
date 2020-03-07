@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { storesReducer } from './containers/LandingPage/reducer';
+import { storeReducer } from './containers/StoreLoadout/reducer';
 import { offersReducer } from './containers/Offers/reducer';
 import { bannerReducer } from './containers/Banner/reducer';
 import { yorStoreOfTheDayReducer } from './containers/YorStoreOfTheDay/reducer';
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
         yorStores: yorStoreOfTheDayReducer,
         banner: bannerReducer,
         offers: offersReducer,
-        stores: storesReducer,
+        stores: storeReducer,
         storeDetails: storeDetailsReducer,
     }),
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
-import { updateStoreDetails } from './reducer';
+import { getStore, updateStoreDetails } from './reducer';
 
 class StoreLoadout extends React.Component {
     constructor(props) {
@@ -11,8 +11,18 @@ class StoreLoadout extends React.Component {
 
     componentDidMount() {
         (async () => {
-            this.res = await Axios.get(`/api${this.props.location.pathname}`);
-            this.props.updateStore(this.createObj(this.res.data));
+            this.res = await Axios.get(
+                `/api/stores/${this.props.match.params.id}`
+            );
+
+            this.props.getStoreInitialData(this.res.data[0]);
+        })();
+        (async () => {
+            this.res = await Axios.get(
+                `/api/storeDetails/${this.props.match.params.id}`
+            );
+
+            this.props.updateStore(this.res.data[0]);
         })();
     }
 
@@ -37,6 +47,7 @@ class StoreLoadout extends React.Component {
 
 export const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
+
     return {
         store: state.current.stores[id],
         storeDetails: state.current.storeDetails[id],
@@ -45,6 +56,9 @@ export const mapStateToProps = (state, ownProps) => {
 
 export const mapDispatchToProps = (dispatch) => {
     return {
+        getStoreInitialData: (res) => {
+            dispatch(getStore(res));
+        },
         updateStore: (res) => {
             dispatch(updateStoreDetails(res));
         },

@@ -10,9 +10,9 @@ const store = createStore(RootReducer);
 
 ReactDOM.render(
     <Provider store={store}>
-        <HashRouter>
+        <BrowserRouter>
             <App />
-        </HashRouter>
+        </BrowserRouter>
     </Provider>,
     document.getElementById('root')
 );
