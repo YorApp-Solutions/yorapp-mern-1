@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const offersSchema = new Schema({
     assign_id: String,
+    store_name: String,
     offer_id: String,
     valid_from: String,
     valid_to: String,
