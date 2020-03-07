@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const bannerRouter = require('./routes/bannerRoutes');
 const yorStoreRouter = require('./routes/yorStoreRoutes');
 const offersRouter = require('./routes/offerRoutes');
+const storeDetailsRouter = require('./routes/storeDetailsRoutes');
+const storesRouter = require('./routes/storeRoutes');
 const path = require('path');
 
 const mongoURL = dbConfig.url;
@@ -25,6 +27,8 @@ app.use(express.static('public'));
 app.use('/api/banner', bannerRouter);
 app.use('/api/yorStores', yorStoreRouter);
 app.use('/api/offers', offersRouter);
+app.use('/api/stores', storesRouter);
+app.use('/api/storeDetails', storeDetailsRouter);
 
 app.use(express.static(path.resolve(__dirname, '../dist')));
 

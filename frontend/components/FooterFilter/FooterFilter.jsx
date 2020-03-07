@@ -6,7 +6,6 @@ class FooterFilter extends React.Component {
     }
 
     render() {
-        //console.log(this.props);
         return (
             <footer>
                 <button onClick={this.props.filterPage} value="all">

@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 
-import { storesReducer } from './containers/App/reducer';
+import { storeReducer } from './containers/StoreLoadout/reducer';
 import { offersReducer } from './containers/Offers/reducer';
 import { bannerReducer } from './containers/Banner/reducer';
 import { yorStoreOfTheDayReducer } from './containers/YorStoreOfTheDay/reducer';
+import { storeDetailsReducer } from './containers/StoreLoadout/reducer';
 
 const rootReducer = combineReducers({
     current: combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
         yorStores: yorStoreOfTheDayReducer,
         banner: bannerReducer,
         offers: offersReducer,
-        stores: storesReducer,
+        stores: storeReducer,
+        storeDetails: storeDetailsReducer,
     }),
 });
 
