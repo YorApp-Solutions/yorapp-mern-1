@@ -37,7 +37,11 @@ class LandingPage extends React.Component {
             <Fragment>
                 {this.state.category === 'all' && <Banner />}
                 <YorStoreOfTheDay category={this.state.category} />
-                <Offers category={this.state.category} />
+                <Offers
+                    category={this.state.category}
+                    onLandingPage={true}
+                    fromStore={false}
+                />
                 <FooterFilter
                     category={this.state.category}
                     filterPage={this.filterPage}

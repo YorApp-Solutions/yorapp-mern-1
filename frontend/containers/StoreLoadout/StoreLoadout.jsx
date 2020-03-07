@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import { getStore, updateStoreDetails } from './reducer';
+import StoreLoadoutComponent from '../../components/StoreLoadout/StoreLoadout.jsx';
 
 class StoreLoadout extends React.Component {
     constructor(props) {
         super(props);
-        this.createObj = this.createObj.bind(this);
     }
 
     componentDidMount() {
@@ -26,28 +26,23 @@ class StoreLoadout extends React.Component {
         })();
     }
 
-    createObj(resData) {
-        const arr = {};
-        const keys = resData.map((e) => e.assign_id);
-        for (let i = 0; i < keys.length; i++) {
-            const key = keys[i];
-            const obj = {
-                [key]: Object.assign({}, resData[i]),
-            };
-            Object.assign(arr, obj);
-        }
-        return arr;
-    }
-
     render() {
-        console.log(this.props);
-        return null;
+        const { store, storeDetails } = this.props;
+        const id = this.props.match.params.id;
+        return (
+            <Fragment>
+                <StoreLoadoutComponent
+                    id={id}
+                    store={store}
+                    storeDetails={storeDetails}
+                />
+            </Fragment>
+        );
     }
 }
 
 export const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
-
     return {
         store: state.current.stores[id],
         storeDetails: state.current.storeDetails[id],
