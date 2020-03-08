@@ -46,7 +46,6 @@ class Offers extends React.Component {
 }
 
 export const mapStateToProps = (state, ownProps) => {
-    console.log(state);
     if (ownProps.fromStore == true) return { offers: state.current.offers };
     else if (ownProps.onLandingPage == true)
         return { offers: state.current.offers };

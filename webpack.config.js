@@ -8,6 +8,19 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
+    watch: true,
+    devServer: {
+        historyApiFallback: true,
+        contentBase: path.resolve(__dirname, 'dist'),
+        host: 'localhost',
+        port: 3000,
+        proxy: {
+            '/': {
+                target: 'http://localhost:8000',
+                secure: false,
+            },
+        },
+    },
     module: {
         rules: [
             {
@@ -20,6 +33,35 @@ module.exports = {
                 use: [
                     {
                         loader: 'html-loader',
+                    },
+                ],
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[name]_[local]_[hash:base64]',
+                            },
+                            importLoaders: 1,
+                            sourceMap: true,
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: 'svg-url-loader',
+                        options: {
+                            limit: 10000,
+                        },
                     },
                 ],
             },
