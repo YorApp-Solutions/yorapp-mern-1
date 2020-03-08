@@ -3,7 +3,6 @@ import { isEmpty } from 'lodash';
 
 const Offers = (props) => {
     if (!isEmpty(props)) {
-        console.log(props);
         return (
             <Fragment>
                 <ul>
