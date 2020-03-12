@@ -1,14 +1,19 @@
 import React, { Fragment } from 'react';
 import { isEmpty } from 'lodash';
 
-import Offers from '../../containers/Offers/Offers.jsx';
+import StoreTile from '../StoreTile/StoreTile.jsx';
+import LiveOffers from '../LiveOffers/LiveOffers.jsx';
 
 const StoreLoadout = (props) => {
     if (!isEmpty(props)) {
         return (
             <Fragment>
-                abcd
-                <Offers fromStore={true} onLandingPage={false} id={props.id} />
+                <StoreTile store={props.store} />
+                <LiveOffers
+                    fromStore={true}
+                    onLandingPage={false}
+                    id={props.id}
+                />
             </Fragment>
         );
     } else return null; //insert skeleton?

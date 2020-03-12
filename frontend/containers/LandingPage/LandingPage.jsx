@@ -5,6 +5,7 @@ import YorStoreOfTheDay from '../YorStoreOfTheDay/YorStoreOfTheDay.jsx';
 import Offers from '../Offers/Offers.jsx';
 import FooterFilter from '../../components/FooterFilter/FooterFilter.jsx';
 import PropTypes from 'prop-types';
+import LiveOffers from '../../components/LiveOffers/LiveOffers.jsx';
 
 class LandingPage extends React.Component {
     constructor(props) {
@@ -36,8 +37,10 @@ class LandingPage extends React.Component {
         return (
             <Fragment>
                 {this.state.category === 'all' && <Banner />}
-                <YorStoreOfTheDay category={this.state.category} />
-                <Offers
+                <YorStoreOfTheDay
+                    category={this.state.category.toLowerCase()}
+                />
+                <LiveOffers
                     category={this.state.category}
                     onLandingPage={true}
                     fromStore={false}
