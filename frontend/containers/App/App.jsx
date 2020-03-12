@@ -3,6 +3,7 @@ import { Switch, Route, useParams } from 'react-router-dom';
 import Header from '../Header/Header.jsx';
 import LandingPage from '../LandingPage/LandingPage.jsx';
 import StoreLoadout from '../StoreLoadout/StoreLoadout.jsx';
+import styles from './app.css';
 
 class App extends React.Component {
     constructor() {
@@ -12,7 +13,7 @@ class App extends React.Component {
         return (
             <Fragment>
                 <Header />
-                <main>
+                <main className={styles.main}>
                     <Switch>
                         <Route exact path="/">
                             <LandingPage />

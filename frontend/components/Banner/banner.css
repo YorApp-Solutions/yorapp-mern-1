@@ -1,4 +1,16 @@
 .banner {
-    margin-top: 500px;
-    margin-bottom: 500px;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.slide {
+    flex-shrink: 0;
+    width: 300px;
+    height: 300px;
+}
+
+.img {
+    width: auto;
+    height: 100%;
 }

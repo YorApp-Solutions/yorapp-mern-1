@@ -8,16 +8,19 @@ const Banner = (props) => {
         return (
             <Fragment>
                 <div className={styles.banner}>
-                    <ul>
-                        {'Banner '}
-                        {props.bannerData.map((elem) => (
-                            <li key={elem.assign_id}>
-                                <Link to={`/stores/${elem.assign_id}`}>
-                                    {elem.assign_id}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                    {props.bannerData.map((elem) => (
+                        <Link
+                            to={`/stores/${elem.assign_id}`}
+                            key={elem.assign_id}>
+                            <div className={styles.slide}>
+                                <img
+                                    src={elem.img}
+                                    alt={elem.name}
+                                    className={styles.img}
+                                />
+                            </div>
+                        </Link>
+                    ))}
                 </div>
             </Fragment>
         );

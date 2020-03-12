@@ -1,17 +1,18 @@
 import React, { Fragment } from 'react';
 import { isEmpty } from 'lodash';
+import StoreTile from '../StoreTile/StoreTile';
 
 const YorStoreOfTheDay = (props) => {
     if (!isEmpty(props.yorStores)) {
         return (
             <Fragment>
-                <ul>
+                <div>
                     {props.yorStores.map((elem) => (
-                        <li key={elem.assign_id}>
-                            {elem.assign_id}, {elem.category}
-                        </li>
+                        <div key={elem.assign_id}>
+                            <StoreTile store={elem} />
+                        </div>
                     ))}
-                </ul>
+                </div>
             </Fragment>
         );
     } else return null; //insert skeleton?
